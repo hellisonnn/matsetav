@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>8 різновидів селекторів</title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        .highlight {
+            background-color: #f1c40f;
+            padding: 5px;
+        }
+
+        #unique-text {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .box p {
+            color: #27ae60;
+            font-style: italic;
+        }
+
+        .my-list > li {
+            list-style-type: square;
+        }
+
+        a[target="_blank"] {
+            color: #8e44ad;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Демонстрація 8 видів CSS-селекторів</h2>
+
+    <p id="unique-text">Це унікальний текст, стилізований по ID</p>
+    <p>А цей текст має <span class="highlight">виділене слово</span> за допомогою класу</p>
+
+    <div class="box">
+        <p>Це абзац всередині блоку .box </p>
+        
+        <ul class="my-list">
+            <li>Елемент списку</li>
+            <li>Ще один елемент списку</li>
+        </ul>
+    </div>
+
+    <p><a href="https://google.com" target="_blank"> Посилання відкриває у новій вкладці google.com</a></p>
+    
+    <a href="../lab1.html">
+        <button>Повернутися назад</button>
+    </a>
+</body>
+</html>
