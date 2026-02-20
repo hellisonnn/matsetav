@@ -1,0 +1,49 @@
+.ex1 {
+    background-color: #f00;
+}
+.ex2 {
+    background-color: brown;
+}
+.ex3 {
+    background-color: aqua;
+}
+.ex4 {
+    color: blue;
+}
+.ex5 {
+    background-image: url("../image/ball.jpg");
+    background-repeat: no-repeat;
+    background-position: 5cm 5cm;
+}
+.ex55 {
+    color: pink;
+}
+.ex6 {
+    font-family: 'Times New Roman', Times, serif;
+}
+.ex7 {
+    font-style: italic;
+}
+
+.ex8 {
+    font-variant: small-caps;
+}
+.ex9 {
+    font-weight: 600;
+}
+.ex10 {
+    font-size: 24px;
+}
+.ex100 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-style: italic;
+}
+.ex1000 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+.ex101 {
+    background-color: blanchedalmond;
+}
