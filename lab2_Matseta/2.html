@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 2</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 20px 50px;
+            color: #000;
+        }
+        h2 {
+            text-align: center;
+        }
+        .task-text {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .note {
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .table-title {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .table-1 {
+            width: 40%;
+            height: 200px;
+            border: 3px solid #800080;
+            border-collapse: separate;
+            border-spacing: 2px;
+            margin: 0 auto;
+        }
+        .table-1 td {
+            border: 1px solid #800080;
+        }
+        .table-1 td:first-child {
+            width: 150px;
+            text-align: center;
+        }
+        .table-1 tr:first-child td:not(:first-child) {
+            text-align: center;
+        }
+        .table-1 tr:nth-child(2) td {
+            height: 150px;
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .table-2 {
+            border: 1px solid #4682b4;
+            border-spacing: 20px;
+            border-collapse: separate;
+        }
+        .table-2 td {
+            border: 1px solid #4682b4;
+            padding: 0;
+            width: 120px;
+        }
+
+        .table-3 {
+            border: 1px solid #b22222;
+            border-spacing: 20px;
+            border-collapse: separate;
+        }
+        .table-3 td {
+            padding: 0;
+            width: 120px;
+        }
+
+        .table-4 {
+            border: 1px solid #008080;
+            border-spacing: 30px;
+            border-collapse: separate;
+        }
+        .table-4 td {
+            border: 1px solid #008080;
+            padding: 10px;
+            width: 120px;
+            text-align: center;
+        }
+
+        .table-5 {
+            border: 2px solid #ff1493;
+            border-collapse: collapse;
+            width: 60%;
+        }
+        .table-5 td {
+            border: 1px solid #ff1493;
+            padding: 10px;
+        }
+        .bg-green {
+            background-color: #7cfc00;
+        }
+
+        .table-6 {
+            border-collapse: collapse;
+            text-align: center;
+            margin-left: 20px;
+        }
+        .table-6 th, .table-6 td {
+            border: 1px solid #808080;
+            padding: 5px 15px;
+        }
+
+        .table-7 {
+            border-collapse: collapse;
+            border: 2px solid #0000cd;
+            margin: 0 auto;
+            width: 60%;
+        }
+        .table-7 td {
+            border: 2px solid #0000cd;
+            padding: 5px 10px;
+        }
+        
+        .table-8 {
+            border: 1px solid #008080;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        .table-8 > tbody > tr > td {
+            border: 1px solid #008080;
+            padding: 5px;
+            vertical-align: top;
+        }
+        .table-8-1 {
+            border: 2px solid #800080;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        .table-8-1 td {
+            border: 1px solid #800080;
+            padding: 2px 5px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab2.html">Назад</a>
+    <h2>Побудова таблиць.</h2>
+    <div class="task-text">Завдання: Побудуйте наступні таблиці.</div>
+
+    <table class="table-1">
+        <tr>
+            <td>Data1</td>
+            <td>Data2</td>
+            <td>Data3</td>
+        </tr>
+        <tr>
+            <td>Data4</td>
+            <td>Data5</td>
+            <td>Data6</td>
+        </tr>
+    </table>
+    <div class="table-title">Таблиця 1.</div>
+
+    <div class="note">Примітка: ширина таблиці - 40%, висота таблиці - 200, ширина першого стовпця 150, висота другого рядка 150</div>
+    <table class="table-2">
+        <tr>
+            <td>Data1</td>
+            <td>Data2</td>
+            <td>Data3</td>
+        </tr>
+        <tr>
+            <td>Data4</td>
+            <td>Data5</td>
+            <td>Data6</td>
+        </tr>
+        <tr>
+            <td>Data7</td>
+            <td>Data8</td>
+            <td>Data9</td>
+        </tr>
+    </table>
+    <div class="table-title">Таблиця 2.</div>
+
+    <div class="note">Примітка: Вільний простір між комірками всередині всієї таблиці 20%.<br><br>Вільний простір між даними всередині комірки і її межами 0%.</div>
+
+    <table class="table-3">
+        <tr>
+            <td style="border: 1px solid #00bfff;">Data1</td>
+            <td style="border: 1px solid #b22222;">Data2</td>
+            <td style="border: 1px solid #8b0000;">Data3</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #b22222;">Data4</td>
+            <td style="border: 1px solid #b22222;">Data5</td>
+            <td style="border: 1px solid #5f9ea0;">Data6</td>
+        </tr>
+    </table>
+    <div class="table-title">Таблиця 3.</div>
+
+    <div class="note">Примітка: Вільний простір між комірками всередині всієї таблиці 30%.<br><br>Вільний простір між даними всередині комірки і її межами 0%.</div>
+
+    <table class="table-4">
+        <tr>
+            <td style="color: #4169e1;">Data1</td>
+            <td>Data2</td>
+            <td>Data3</td>
+        </tr>
+        <tr>
+            <td>Data4</td>
+            <td>Data5</td>
+            <td style="color: #ff69b4;">Data6</td>
+        </tr>
+    </table>
+    <div class="table-title">Таблиця 4.</div>
+
+    <div class="note">Примітка: Вільний простір між комірками всередині всієї таблиці 0%.<br><br>Вільний простір між даними всередині комірки і її межами 10%.</div>
+
+    <table class="table-5">
+        <tr>
+            <td style="text-align: left;">1</td>
+            <td style="text-align: center;">2</td>
+            <td style="text-align: right;">3</td>
+        </tr>
+        <tr>
+            <td style="text-align: left;">4</td>
+            <td class="bg-green" style="text-align: center;">5</td>
+            <td style="text-align: left;">6</td>
+        </tr>
+        <tr>
+            <td class="bg-green" style="text-align: center;">7</td>
+            <td class="bg-green" style="text-align: center;">8</td>
+            <td class="bg-green" style="text-align: left;">9</td>
+        </tr>
+    </table>
+    <div class="table-title" style="text-align: left; margin-left: 100px;">Таблиця 5.</div>
+
+    <table class="table-6">
+        <tr>
+            <th rowspan="2">Стать</th>
+            <th>Ріст</th>
+            <th>Вага</th>
+            <th rowspan="2">Рік</th>
+        </tr>
+        <tr>
+            <th colspan="2">Середнє значення</th>
+        </tr>
+        <tr>
+            <td>чоловіки</td>
+            <td>174</td>
+            <td>78</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>жінки</td>
+            <td>165</td>
+            <td>56</td>
+            <td>25</td>
+        </tr>
+    </table>
+    <div class="table-title" style="text-align: left; margin-left: 50px;">Таблиця 6.</div>
+
+    <table class="table-7">
+        <tr>
+            <td style="background-color: #87cefa;">Data</td>
+            <td colspan="2">Data</td>
+            <td>Data</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Data</td>
+            <td rowspan="2">Data</td>
+            <td>Data</td>
+            <td style="background-color: #ffb6c1;">Data</td>
+        </tr>
+        <tr>
+            <td>Data</td>
+            <td style="background-color: #ff00ff;"></td>
+        </tr>
+    </table>
+    <div class="table-title">Таблиця 7.</div>
+    <table class="table-8">
+        <tr>
+            <td>Data</td>
+            <td>Data</td>
+            <td>Data</td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table-8-1">
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                    <tr>
+                        <td>Data4</td>
+                        <td>Data5</td>
+                        <td>Data6</td>
+                    </tr>
+                </table>
+                <div class="table-title" style="margin-bottom: 0;">Таблиця 8.1.</div>
+            </td>
+            <td>Data</td>
+            <td style="vertical-align: middle;">
+                <table class="table-8-1">
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                    </tr>
+                </table>
+                <div class="table-title" style="margin-bottom: 0;">Таблиця 8.1.</div>
+            </td>
+        </tr>
+    </table>
+    <div class="table-title">Таблиця 8. Таблиця вкладена в таблицю.</div>
+</body>
+
+</html>
