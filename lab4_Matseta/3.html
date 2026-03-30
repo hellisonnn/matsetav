@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання №3</title>
+<style>
+        body {
+            height: 1500px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .box {
+            border: 1px solid black;
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 300px;
+        }
+
+        .p-sticky { 
+            position: sticky;
+            top: 0;
+            background-color: pink;
+        }
+        .p-static {
+            position: static;
+            background-color: lightgray; 
+        }
+        .p-relative {
+            position: relative;
+            top: 20px; 
+            left: 30px; 
+            background-color: lightblue;
+         }
+        
+        .parent {
+            position: relative;
+            border: 1px dashed red;
+            width: 400px; height: 150px;
+            margin-top: 40px; 
+        }
+        .p-absolute {
+            position: absolute;
+            top: 10px; 
+            right: 10px;
+            background-color: lightgreen;
+            width: 150px; 
+        }
+        
+        .p-fixed { 
+            position: fixed; 
+            bottom: 10px; 
+            right: 10px; 
+            background-color: yellow; 
+            width: 150px; 
+        }
+
+        .fl-left { 
+            float: left; 
+            width: 100px; 
+            height: 100px; 
+            background-color: cyan;
+            margin-right: 10px;
+        }
+        .fl-right { 
+            float: right; 
+            width: 100px; 
+            height: 100px; 
+            background-color: magenta; 
+            margin-left: 10px; 
+        }
+        
+        .c-both { 
+            clear: both; 
+            background-color: orange; 
+            padding: 5px; 
+            margin-top: 10px; 
+        }            
+
+        .z-wrap { 
+            position: relative; 
+            height: 150px; 
+            margin-top: 20px; 
+        }
+        .z-item { 
+            position: absolute; 
+            width: 100px; 
+            height: 100px; 
+            border: 1px solid black; 
+        }
+        
+        .z1 { 
+            top: 0; 
+            left: 0; 
+            background-color: red; 
+            z-index: 1; 
+        }
+        .z2 { 
+            top: 20px; 
+            left: 20px; 
+            background-color: green; 
+            z-index: 2; 
+        }
+        .z3 { 
+            top: 40px; 
+            left: 40px; 
+            background-color: blue; 
+            z-index: 3; 
+            color: white; 
+        }
+    </style>
+</head>
+<body>
+<a style="display: block; text-align: right;" href="lab4.html">Назад</a>
+    <div class="box p-sticky">
+        <b>position: sticky</b><br>
+        При прокрутці сторінки вниз цей блок фіксується у верхній частині екрана.
+    </div>
+
+    <h3>1. Властивість position</h3>
+
+    <div class="box p-static">
+        <b>position: static</b><br>
+        Блок знаходиться на своєму стандартному місці.
+    </div>
+
+    <div class="box p-relative">
+        <b>position: relative</b><br>
+        Блок зсунуто на 20px вниз та 30px вправо відносно його початкового положення.
+    </div>
+
+    <div class="parent">
+        Батьківський блок (position: relative)
+        <div class="box p-absolute">
+            <b>position: absolute</b><br>
+            Блок розміщено у правому верхньому куті батьківського контейнера.
+        </div>
+    </div>
+
+    <div class="box p-fixed">
+        <b>position: fixed</b><br>
+        Блок завжди знаходиться у правому нижньому куті вікна браузера.
+    </div>
+
+    <hr>
+
+    <h3>2. Властивості float та clear</h3>
+
+    <div>
+        <div class="fl-left"><b>float: left</b><br>Притиснуто вліво</div>
+        <div class="fl-right"><b>float: right</b><br>Притиснуто вправо</div>
+        Текст обтікає плаваючі блоки. Властивість float вилучає елементи зі стандартного потоку та притискає їх до вказаного краю.
+        
+        <div class="c-both">
+            <b>clear: both</b><br>
+            Цей блок скидає обтікання. Він розміщується нижче всіх плаваючих елементів.
+        </div>
+    </div>
+
+    <hr>
+
+    <h3>3. Властивість z-index</h3>
+    <p>Визначає порядок накладання елементів. Чим більше значення, тим вище блок.</p>
+
+    <div class="z-wrap">
+        <div class="z-item z1">z-index: 1</div>
+        <div class="z-item z2">z-index: 2</div>
+        <div class="z-item z3">z-index: 3</div>
+    </div>
+
+</body>
+</html>
