@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 150px 300px 150px; 
+            grid-template-rows: 60px 350px 60px;
+            gap: 15px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+
+        .block {
+            border: 2px solid #333;
+            display: grid;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .header {
+            grid-column: 1 / 4;
+            background-color: #FFC107;
+            grid-template-columns: 100px 1fr;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .header-search {
+            background-color: white;
+            height: 25px;
+            border: 2px solid #333;
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .sidebar-left {
+            background-color: #2962FF;
+            color: white;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-content {
+            background-color: white;
+            grid-template-rows: 1fr 60px;
+            gap: 15px;
+            padding: 15px;
+            border: 2px solid #ccc;
+        }
+
+        .main-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .red-box {
+            background-color: #FF5252;
+            border: 2px solid #333;
+        }
+
+        .sidebar-right {
+            background-color: #2962FF;
+            color: white;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer {
+            grid-column: 1 / 4;
+            background-color: #FFC107;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab8.html">Назад</a>
+    <div class="grid-container">
+        <div class="block header">
+            <div class="header-search"></div>
+            <div class="header-text">1</div>
+        </div>
+        
+        <div class="block sidebar-left">2</div>
+        
+        <div class="block main-content">
+            <div class="main-text">3</div>
+            <div class="red-box"></div>
+        </div>
+        
+        <div class="block sidebar-right">4</div>
+        
+        <div class="block footer">5</div>
+    </div>
+
+</body>
+</html>

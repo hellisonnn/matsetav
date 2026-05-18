@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 2</title>
+    <style>
+        :root {
+            --yellow: #FFC107;
+            --blue: #2962FF;
+            --red: #FF5252;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-areas: 
+                "header header header"
+                "left main right"
+                "footer footer footer";
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto 400px auto;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.2);
+            border: 2px solid #333;
+        }
+
+        .box {
+            border: 2px solid #333;
+            padding: 15px;
+        }
+
+        .box-1 {
+            grid-area: header;
+            background-color: var(--yellow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .search-mockup {
+            width: 150px;
+            height: 30px;
+            background: white;
+            border: 2px solid #333;
+        }
+
+        .box-2 {
+            grid-area: left;
+            background-color: var(--blue);
+            color: white;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .box-3 {
+            grid-area: main;
+            display: grid;
+            grid-template-rows: 1fr auto;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+        .content-scroll {
+            overflow-y: auto;
+            padding-right: 15px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .box-red {
+            background-color: var(--red);
+            height: 60px;
+            border: 2px solid #333;
+        }
+
+        .box-4 {
+            grid-area: right;
+            background-color: var(--blue);
+            color: white;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .box-5 {
+            grid-area: footer;
+            background-color: var(--yellow);
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-areas: 
+                    "header"
+                    "main"
+                    "left"
+                    "right"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                box-shadow: none;
+                padding: 10px;
+            }
+            .box-3 {
+                height: 350px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .layout {
+                max-width: 1200px;
+                grid-template-columns: 1fr 3fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .layout {
+                box-shadow: none;
+                border: none;
+                grid-template-areas: 
+                    "header header"
+                    "main main"
+                    "footer footer";
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .box-2, .box-4, .box-red, .search-mockup {
+                display: none;
+            }
+            .box {
+                background: transparent !important;
+                color: black !important;
+                border: 1px solid #000;
+            }
+            .content-scroll {
+                overflow-y: visible;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab8.html">Назад</a>
+    <div class="layout">
+        <div class="box box-1">
+            <div class="search-mockup"></div>
+            <div>1</div>
+        </div>
+        
+        <div class="box box-2">2</div>
+        
+        <div class="box box-3">
+            <div class="content-scroll">
+                <h3>Принцип роботи адаптивного макета</h3>
+                <p>Ця сторінка реалізована за допомогою двовимірної сітки CSS Grid із використанням іменованих областей через властивість <strong>grid-template-areas</strong>. На стаціонарних моніторах блоки автоматично розподіляються на три колонки.</p>
+                <p>Адаптивність та зміна структури забезпечується трьома правилами <strong>@media</strong>:</p>
+                <ul>
+                    <li><strong>max-width: 768px (Мобільні пристрої)</strong> — сітка перебудовується в одну вертикальну сторінку. Тінь контейнера вимикається для збереження простору, а блоки стають один під одним.</li>
+                    <li><strong>min-width: 1200px (Широкі екрани)</strong> — збільшує максимальну ширину основного контейнера та розширює центральну область відносно бокових панелей.</li>
+                    <li><strong>print (Друк сторінки)</strong> — оптимізує документ для виводу на папір. Текстовий блок розгортається на повну довжину, рамки спрощуються, а кольорові декоративні блоки (елементи 2, 4 та червона плашка) повністю приховуються для економії фарби.</li>
+                </ul>
+                <p>Властивість <strong>overflow-y: auto</strong> застосована до текстового контейнера. Вона обмежує вихід контенту за межі блоку 3, утворюючи акуратну вертикальну смугу прокручування лише тоді, коли обсяг тексту перевищує задану висоту рядка в десктопному режимі.</p>
+            </div>
+            <div class="box-red"></div>
+        </div>
+        
+        <div class="box box-4">4</div>
+        
+        <div class="box box-5">5</div>
+    </div>
+
+</body>
+</html>
