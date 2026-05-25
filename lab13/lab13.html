@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Vladyslav Matseta | Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+
+        html{
+            scroll-behavior: smooth;
+        }
+
+        body{
+            background-color: #1A1A2E;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        .grid-container{
+            width: 85%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+        }
+
+        .header-right{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        header img{
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        nav a:hover{
+            color: #00E5FF;
+        }
+
+        .cv-btn{
+            background: #00E5FF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cv-btn:hover{
+            transform: scale(1.05);
+        }
+
+        h1, h2, h3, h4{
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .hero{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .hero img{
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .projects-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card{
+            background-color: #242442;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .card img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="grid-container">
+
+        <img src="img/logo.png" alt="Logo" width="60" height="60">
+
+        <div class="header-right">
+
+            <button class="cv-btn">Download CV</button>
+
+            <nav>
+
+                <!-- ПЕРЕКИДАЄ НА ABOUT ME -->
+                <a href="about.html#about">About me</a>
+
+                <!-- ПЕРЕКИДАЄ НА SKILLS -->
+                <a href="about.html#skills">Skills</a>
+
+                <!-- PROJECTS НА ЦІЙ ЖЕ СТОРІНЦІ -->
+                <a href="#projects">Projects</a>
+
+                <!-- ПЕРЕКИДАЄ НА CONTACTS -->
+                <a href="about.html#contact">Contacts</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main class="grid-container hero">
+
+        <div>
+
+            <h1 style="font-size: 56px;">
+                Hello, I'm Vladyslav
+            </h1>
+
+            <p style="font-size: 24px;">
+                Software engineer
+            </p>
+
+        </div>
+
+        <img src="img/portret.JPG" alt="Vladyslav">
+
+    </main>
+
+    <section id="projects" class="grid-container">
+
+        <h3>My projects:</h3>
+
+        <div class="projects-grid">
+
+            <article class="card">
+
+                <img src="img/project1.png" alt="Project 1">
+
+                <h4>Sanatorium Management System</h4>
+
+                <p>
+                    Developed the core system architecture and comprehensive glossary for a specialized management software project.
+                </p>
+
+            </article>
+
+            <article class="card">
+
+                <img src="img/project2.png" alt="Project 2">
+
+                <h4>Application Interface Design</h4>
+
+                <p>
+                    A comprehensive UI/UX design for a mobile application, created entirely in Figma. The project focuses on intuitive user navigation, modern visual aesthetics, and structured layout from low-fidelity wireframes to high-fidelity prototypes.
+                </p>
+
+            </article>
+
+            <article class="card">
+
+                <img src="img/project3.png" alt="Project 3">
+
+                <h4>Algorithmic Pathfinding Visualizer</h4>
+
+                <p>
+                    An interactive tool that animates sorting and pathfinding algorithms in real-time. Designed to help students understand complex data structures and logic flow.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <title>About me</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background: #17172b;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            padding: 35px;
+        }
+
+        .container{
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .back-text{
+            display: inline-block;
+            margin-bottom: 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .back-text:hover{
+            opacity: 0.7;
+        }
+
+        .top-section{
+            display: flex;
+            gap: 35px;
+            align-items: flex-start;
+            margin-bottom: 35px;
+        }
+
+        .profile-photo img{
+            width: 430px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .about{
+            flex: 1;
+        }
+
+        .about h1{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 58px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .about p{
+            font-size: 30px;
+            line-height: 1.45;
+            color: #f1f1f1;
+        }
+
+        .bottom-section{
+            display: flex;
+            justify-content: space-between;
+            gap: 80px;
+        }
+
+        .skills,
+        .contacts{
+            flex: 1;
+        }
+
+        .skills h2,
+        .contacts h2{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 54px;
+            margin-bottom: 25px;
+        }
+
+        .skill-item{
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .skill-item img{
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        .skill-item p{
+            font-size: 24px;
+            line-height: 1.4;
+        }
+
+        .skill-item strong{
+            font-weight: 700;
+        }
+
+        .contact-item{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-bottom: 22px;
+            font-size: 24px;
+        }
+
+        .contact-item img{
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .contacts{
+            text-align: right;
+        }
+
+        .github-link{
+            word-break: break-word;
+            max-width: 500px;
+            margin-left: auto;
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover{
+            opacity: 0.8;
+        }
+
+        @media (max-width: 1100px){
+
+            .top-section{
+                flex-direction: column;
+            }
+
+            .bottom-section{
+                flex-direction: column;
+            }
+
+            .profile-photo img{
+                width: 100%;
+                height: auto;
+            }
+
+            .about h1{
+                font-size: 42px;
+            }
+
+            .about p{
+                font-size: 22px;
+            }
+
+            .skills h2,
+            .contacts h2{
+                font-size: 40px;
+            }
+
+            .contact-item{
+                justify-content: flex-start;
+            }
+
+            .contacts{
+                text-align: left;
+            }
+
+            .github-link{
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="lab13.html" class="back-text">
+        ← Back
+    </a>
+
+    <div class="top-section">
+
+        <div class="profile-photo">
+            <img src="img/my2.jpg" alt="My photo">
+        </div>
+
+        <div class="about">
+            <h1>About me:</h1>
+
+            <p>
+                I am an 18-year-old software engineering student currently studying at the Faculty of Mathematics and Informatics at Carpathian National University. Based in Tlumach, Ukraine, I am passionate about writing efficient code and creating clean, user-friendly digital designs. I enjoy blending technical problem-solving with creative UI/UX prototyping to build complete, functional software solutions.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="bottom-section">
+
+        <section class="skills">
+
+            <h2>Skills:</h2>
+
+            <div class="skill-item">
+
+                <img src="img/cpp.png" alt="cpp">
+
+                <p>
+                    <strong>Programming & Web:</strong><br>
+                    C++, HTML/CSS, JavaScript
+                </p>
+
+            </div>
+
+            <div class="skill-item">
+
+                <img src="img/figma.png" alt="figma">
+
+                <p>
+                    <strong>Design & Prototyping:</strong><br>
+                    Figma, Photopea, UI/UX Design, Wireframing
+                </p>
+
+            </div>
+
+            <div class="skill-item">
+
+                <img src="img/core.jpg" alt="core">
+
+                <p>
+                    <strong>Core Concepts:</strong><br>
+                    System Architecture, Data Structures,
+                    Object-Oriented Programming
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="contacts">
+
+            <h2>Contact me:</h2>
+
+            <div class="contact-item">
+
+                <span>vladyslav.matseta.25@cnu.edu.ua</span>
+
+                <img src="img/mail.png" alt="mail">
+
+            </div>
+
+            <div class="contact-item">
+
+                <span>+380 99 037 81 73</span>
+
+                <img src="img/phone.jpg" alt="phone">
+
+            </div>
+
+            <div class="contact-item">
+
+                <span>@hellisonn1337</span>
+
+                <img src="img/tg.png" alt="telegram">
+
+            </div>
+
+            <div class="contact-item">
+
+                <span>@matseta_v</span>
+
+                <img src="img/inst.jpg" alt="instagram">
+
+            </div>
+
+            <div class="contact-item github-link">
+
+                <span>
+                    https://github.com/hellisonnn/matsetav/tree/main
+                </span>
+
+                <img src="img/gh.png" alt="github">
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+</body>
+</html>
