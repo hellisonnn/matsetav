@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота 11</title>
+    <style>
+        * {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+
+        .task-section {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input:not([type="radio"]):not([type="checkbox"]),
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        fieldset {
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            padding: 15px;
+            display: grid;
+            gap: 10px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #2c3e50;
+            background: #fff;
+            padding: 0 5px;
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, max-content);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"], input[type="reset"], input[type="button"] {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        input[type="reset"] { background-color: #e74c3c; }
+        input[type="button"] { background-color: #95a5a6; }
+
+        .pseudo-elements-text::first-letter {
+            font-size: 250%;
+            color: #e67e22;
+            font-weight: bold;
+            float: left;
+            margin-right: 5px;
+            line-height: 1;
+        }
+
+        .pseudo-elements-text::first-line {
+            font-style: italic;
+            color: #2980b9;
+            font-weight: bold;
+        }
+
+        .pseudo-elements-text::before {
+            content: "【Увага】 ";
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .pseudo-elements-text::after {
+            content: " — [Кінець абзацу]";
+            color: #27ae60;
+            font-size: 0.9em;
+        }
+
+        .demo-link {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .demo-link:link { color: #2980b9; text-decoration: none; }
+        .demo-link:visited { color: #8e44ad; }
+        .demo-link:hover { color: #e67e22; text-decoration: underline; }
+        .demo-link:active { color: #c0392b; transform: scale(0.95); }
+
+        .validation-demo:invalid {
+            border-color: #e74c3c;
+            background-color: #fadbd8;
+        }
+        .validation-demo:valid {
+            border-color: #2ecc71;
+            background-color: #d5f5e3;
+        }
+
+        .enabled-demo:enabled {
+            border: 2px solid #3498db;
+        }
+        .enabled-demo:disabled {
+            border: 1px dashed #7f8c8d;
+            background-color: #ecf0f1;
+            color: #95a5a6;
+        }
+
+        .nth-demo-container p {
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            background: #fafafa;
+        }
+        .nth-demo-container p:nth-last-of-type(2) {
+            background-color: #f1c40f;
+            color: #000;
+            font-weight: bold;
+            border-color: #f39c12;
+        }
+
+        #target-block {
+            padding: 15px;
+            margin-top: 15px;
+            border: 2px solid transparent;
+            background-color: #ecf0f1;
+            transition: all 0.5s ease;
+        }
+        #target-block:target {
+            border-color: #2ecc71;
+            background-color: #e8f8f5;
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="task-section">
+        <h2>Завдання 1: Веб-форми</h2>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Основна інформація користувача</legend>
+
+                <div class="form-group">
+                    <label for="username">Ім'я (text):</label>
+                    <input type="text" id="username" name="username" placeholder="Введіть ПІБ">
+                </div>
+
+                <div class="form-group">
+                    <label for="userEmail">Електронна пошта (email):</label>
+                    <input type="email" id="userEmail" name="userEmail" placeholder="student@cnu.edu.ua">
+                </div>
+
+                <div class="form-group">
+                    <label for="userPass">Пароль (password):</label>
+                    <input type="password" id="userPass" name="userPass">
+                </div>
+
+                <div class="form-group">
+                    <label for="volume">Рівень підготовки (range):</label>
+                    <input type="range" id="volume" name="volume" min="1" max="10" value="5">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Додаткові дані</legend>
+
+                <div class="form-group">
+                    <label for="comments">Про себе (textarea):</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Напишіть кілька слів..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Мова програмування (radio):</label>
+                    <div>
+                        <label><input type="radio" name="lang" value="cpp" checked> C++ (За замовчуванням)</label><br>
+                        <label><input type="radio" name="lang" value="bash"> Bash</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Інструменти дизайну (checkbox):</label>
+                    <div>
+                        <label><input type="checkbox" name="tools" value="figma"> Figma</label><br>
+                        <label><input type="checkbox" name="tools" value="photopea"> Photopea</label><br>
+                        <label><input type="checkbox" name="tools" value="photoshop"> Photoshop</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cars">Улюблене авто (select):</label>
+                    <select id="cars" name="cars">
+                        <optgroup label="Німецькі">
+                            <option value="porsche911">Porsche 911</option>
+                            <option value="audirs6">Audi RS6</option>
+                        </optgroup>
+                        <optgroup label="Інші">
+                            <option value="dacia">Dacia Logan</option>
+                            <option value="nissan">Nissan Skyline</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="games">Ігри (multiple):</label>
+                    <select id="games" name="games" multiple size="3">
+                        <option value="dota2">Dota 2</option>
+                        <option value="cs2">Counter-Strike 2</option>
+                        <option value="valorant">Valorant</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <div class="buttons-grid">
+                <input type="submit" value="Відправити дані">
+                <input type="reset" value="Очистить форму">
+                <input type="button" value="Click me!" onClick='alert("Oh, you have been clicked me!!!")'>
+            </div>
+        </form>
+    </div>
+
+    <div class="task-section">
+        <h2>Завдання 2: Псевдоелементи</h2>
+        <p class="pseudo-elements-text">
+            Цей текст використовується для демонстрації роботи псевдоелементів. 
+            Тут наочно видно, як змінюється перша літера за допомогою <code>::first-letter</code>, 
+            і як перший рядок отримує інший стиль завдяки <code>::first-line</code> (змініть ширину вікна, щоб побачити ефект). 
+            Також на початку та в кінці цього абзацу автоматично додано текст за допомогою <code>::before</code> та <code>::after</code>.
+        </p>
+    </div>
+
+    <div class="task-section">
+        <h2>Завдання 3: Псевдокласи для посилань</h2>
+        <p>
+            <a href="https://pnu.edu.ua/" class="demo-link" target="_blank">Сайт Університету</a>
+            <a href="#unvisited-link" class="demo-link">Не відвідане посилання</a>
+        </p>
+        <p><em>(Наведіть курсор на посилання, натисніть і потримайте, щоб побачити всі стани: :link, :visited, :hover, :active).</em></p>
+    </div>
+
+    <div class="task-section">
+        <h2>Завдання 4: Варіант 4 (:valid, :invalid, :enabled, :nth-last-of-type, :target)</h2>
+        
+        <h3>1. Псевдокласи :valid та :invalid</h3>
+        <p>Введіть коректну або некоректну електронну адресу, щоб побачити зміну кольору (червоний/зелений):</p>
+        <input type="email" class="validation-demo" required placeholder="Введіть email..." style="padding: 8px; width: 250px;">
+
+        <h3>2. Псевдокласи :enabled (та :disabled)</h3>
+        <input type="text" class="enabled-demo" value="Це поле :enabled" style="padding: 8px; width: 200px;">
+        <input type="text" class="enabled-demo" value="Це поле :disabled" disabled style="padding: 8px; width: 200px;">
+
+        <h3>3. Псевдоклас :nth-last-of-type(n)</h3>
+        <div class="nth-demo-container">
+            <p>Параграф 1</p>
+            <p>Параграф 2</p>
+            <p>Параграф 3 (Це передостанній параграф, n=2 з кінця)</p>
+            <p>Параграф 4</p>
+            <span>Це span-елемент, він ігнорується селектором of-type для параграфів.</span>
+        </div>
+
+        <h3>4. Псевдоклас :target</h3>
+        <p>Натисніть на посилання <a href="#target-block">Активувати :target блок</a>. Зверніть увагу на зміну стилів блоку нижче та на URL-адресу в браузері (з'явиться хеш #target-block).</p>
+        <div id="target-block">
+            <strong>Цільовий блок.</strong> Мій стиль змінюється, коли я стаю "ціллю" в URL-адресі!
+        </div>
+    </div>
+
+</body>
+</html>
