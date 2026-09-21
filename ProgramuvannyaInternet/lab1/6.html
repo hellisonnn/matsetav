@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 6</title>
+    
+    <script language="JavaScript">
+        let product = ["Відеокарта", "Мишка", "Монітор"]; 
+        let quantity = [12, 45, 8];
+        let cost = [15000, 800, 6500];
+        
+        let currentProductIndex = -1;
+
+        function fun1() {
+            let searchName = document.form1.name_cont.value;
+            currentProductIndex = -1;
+
+            for (let i = 0; i < product.length; i++) {
+                if (product[i].toLowerCase() === searchName.toLowerCase()) {
+                    currentProductIndex = i;
+                    break;
+                }
+            }
+
+            if (currentProductIndex !== -1) {
+                document.form1.output_quantity.value = quantity[currentProductIndex];
+                document.form1.output_cost.value = cost[currentProductIndex];
+            } else {
+                document.form1.output_quantity.value = "Товар не знайдено";
+                document.form1.output_cost.value = "-";
+            }
+        }
+
+        function fun2() {
+            if (currentProductIndex !== -1) {
+                let totalSum = quantity[currentProductIndex] * cost[currentProductIndex];
+                document.form1.output_total.value = "Загальна сума для товару '" + product[currentProductIndex] + "' становить: " + totalSum + " грн.";
+            } else {
+                document.form1.output_total.value = "Спочатку знайдіть товар за допомогою першої кнопки.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Завдання 6. Робота з товарами</h3>
+    
+    <form name="form1">
+        <p>Введіть назву товару (Доступні: <b>Відеокарта, Мишка, Монітор</b>):</p>
+        <input type="text" name="name_cont">
+        <input type="button" value="Наявна кількість і вартість" onClick="fun1()">
+        <br><br>
+        
+        Наявна кількість:<br>
+        <input type="text" size="70" name="output_quantity"><br><br>
+        
+        Вартість за одиницю (грн):<br>
+        <input type="text" size="70" name="output_cost"><br><br>
+        
+        <input type="button" value="Загальна сума" onClick="fun2()"><br><br>
+        <input type="text" size="70" name="output_total">
+    </form>
+</body>
+</html>

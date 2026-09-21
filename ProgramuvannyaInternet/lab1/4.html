@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота №1</title>
+    <script language="JavaScript">
+        function calculation() {
+            let x = 12;
+            let y = 5;
+            let result = (1 - Math.pow(x, 2)) / Math.pow(y, 3);
+            alert(result);
+        }
+
+        function handleEvent(message) {
+            document.getElementById('task3_result').value = message;
+        }
+
+        function calculateTask4() {
+            let x = parseFloat(document.getElementById('task4_x').value);
+            let y = parseFloat(document.getElementById('task4_y').value);
+            let f;
+
+            if ((x < 10) || (y > 3)) {
+                f = Math.pow(x, 2) + Math.pow(y, 2);
+            } else if (x > 2) {
+                f = x - y + Math.pow(x, 2);
+            } else {
+                f = Math.pow(x, 3) + 3 * x * y;
+            }
+
+            document.getElementById('task4_result').value = f;
+        }
+    </script>
+</head>
+<body>
+    <h3>Завдання 1.</h3>
+    <p>Це звичайний HTML абзац.</p>
+    
+    <script language="JavaScript">
+        document.write("Привіт! Мене звати Мацета Владислав Іванович, студент групи ІПЗ-23.");
+    </script>
+    
+    <p>Знову звичайний HTML абзац.</p>
+    
+    <form>
+        <input type="button" value="Click me" onClick="alert('Я народився 04.02.2008 року в місті Тлумач')">
+    </form>
+
+    <h3>Завдання 2.</h3>
+    <form>
+        <input type="button" value="Calculate" onClick="calculation()">
+    </form>
+
+    <h3>Завдання 3.</h3>
+    <form>
+        <p>Взаємодійте з цим полем:</p>
+        <input type="text" size="60" value="Клікніть по цьому тексту або виділіть його" 
+               onClick="handleEvent('Відбувся клік на першому полі (onClick)!')" 
+               onSelect="handleEvent('Текст у першому полі виділено (onSelect)!')">
+        
+        <br><br>
+        
+        <p>Результат події:</p>
+        <input type="text" size="60" id="task3_result" placeholder="Тут з'явиться повідомлення про подію">
+    </form>
+
+    <h3>Завдання 4.</h3>
+    <form id="task4_form">
+        x: <input type="text" id="task4_x" value="10"><br>
+        y: <input type="text" id="task4_y" value="2"><br>
+        F: <input type="text" id="task4_result" value="" readonly><br><br>
+        <input type="button" value="Розрахувати" onClick="calculateTask4()">
+    </form>
+</body>
+</html>
