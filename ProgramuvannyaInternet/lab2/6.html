@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 6</title>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab2.html">Назад</a>
+    <h2>Завдання 6: Перевірка імен</h2>
+    <p>Результати роботи скрипту виведено в консоль браузера (F12 -> Console).</p>
+
+    <script type="text/javascript">
+        let names = ["Alice", "John", "Eva", "Michael", "Oliver", "Sarah", "Ursula", "David"];
+
+        for (let i = 0; i < names.length; i++) {
+            let currentName = names[i];
+            
+            let firstLetter = currentName.charAt(0).toLowerCase();
+
+            if (firstLetter === 'a' || firstLetter === 'e' || firstLetter === 'i' || firstLetter === 'o' || firstLetter === 'u') {
+                console.log("Goodbye " + currentName);
+            } else {
+                console.log("Hello " + currentName);
+            }
+        }
+    </script>
+</body>
+</html>

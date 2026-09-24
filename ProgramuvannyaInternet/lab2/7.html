@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 7</title>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab2.html">Назад</a>
+    <h2>Завдання 7: Перевірка імен</h2>
+    <p>Результати роботи скрипту виведено в консоль браузера (F12 -> Console).</p>
+
+    <script type="text/javascript">
+        let names = ["Alice", "John", "Eva", "Michael", "Oliver", "Sarah", "Ursula", "David"];
+
+        console.log("--- Завдання 6 ---");
+        for (let i = 0; i < names.length; i++) {
+            let currentName = names[i];
+            
+            let firstLetter = currentName.charAt(0).toLowerCase();
+
+            if (firstLetter === 'a' || firstLetter === 'e' || firstLetter === 'i' || firstLetter === 'o' || firstLetter === 'u') {
+                console.log("Goodbye " + currentName);
+            } else {
+                console.log("Hello " + currentName);
+            }
+        }
+
+        console.log("\n--- Завдання 7: Сума ASCII-кодів ---");
+        
+        console.log("Анотація: Обчислюється сума ASCII-кодів усіх літер імені. Якщо сума перевищує поріг 400, ім'я виводиться як 'Важке', інакше - 'Легке'.");
+
+        for (let i = 0; i < names.length; i++) {
+            let currentName = names[i];
+            let asciiSum = 0;
+            
+            for (let j = 0; j < currentName.length; j++) {
+                asciiSum += currentName.charCodeAt(j);
+            }
+
+            if (asciiSum > 400) {
+                console.log(currentName + " -> Важке (Сума: " + asciiSum + ")");
+            } else {
+                console.log(currentName + " -> Легке (Сума: " + asciiSum + ")");
+            }
+        }
+    </script>
+</body>
+</html>

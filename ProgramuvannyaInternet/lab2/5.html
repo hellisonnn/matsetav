@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 5</title>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab2.html">Назад</a>
+    <h2>Завдання 5: Дослідження методів об'єкта console</h2>
+    <p>Натисніть <b>F12</b> та перейдіть на вкладку <b>Console</b>, щоб побачити результати.</p>
+    
+    <div id="test-element" style="color: blue;">Тестовий HTML-елемент</div>
+
+    <script type="text/javascript">
+        console.info("1. Це інформаційне повідомлення (console.info)");
+
+        console.warn("2. Увага! Це попередження (console.warn)");
+
+        console.error("3. Сталася помилка! Це вивід console.error");
+
+        let myObject = {
+            id: 1,
+            title: "Лабораторна робота",
+            completed: false
+        };
+        console.log("4. Демонстрація console.dir() для об'єкта:");
+        console.dir(myObject);
+
+        let domElement = document.getElementById("test-element");
+        console.log("5. Демонстрація console.dirxml() для HTML-елемента:");
+        console.dirxml(domElement);
+
+        console.time("Час виконання циклу");
+        let sum = 0;
+        for (let i = 0; i < 1000000; i++) {
+            sum += i;
+        }
+        console.timeEnd("Час виконання циклу");
+
+        console.profile("Тестовий профіль CPU");
+        for (let i = 0; i < 500000; i++) {
+            let temp = Math.sqrt(i);
+        }
+        console.profileEnd("Тестовий профіль CPU");
+        let userAge = 15;
+        console.assert(userAge >= 18, "8. Відмова доступу (console.assert): Користувач молодший 18 років!");
+        
+        let validValue = 20;
+        console.assert(validValue >= 18, "Це повідомлення не виведеться.");
+    </script>
+
+</body>
+</html>
