@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 5 - Дерево ієрархії</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .tree-root, .tree-root ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .tree-root {
+            padding-left: 0;
+        }
+
+        .category-link {
+            font-weight: bold;
+            color: #0056b3;
+            text-decoration: underline;
+            cursor: pointer;
+            user-select: none; 
+        }
+
+        .category-link:hover {
+            color: #003d82;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .tree-root li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="tree-root">
+        <li>
+            <span class="category-link">fruits:</span>
+            <ul class="sub-list">
+                <li>1. apple</li>
+                <li>2. pineapple;</li>
+                <li>3. appricot;</li>
+                <li>4. pear;</li>
+                <li>5. lemon;</li>
+            </ul>
+        </li>
+        <li>
+            <span class="category-link">vegetables:</span>
+            <ul class="sub-list">
+                <li>1. potatoes;</li>
+                <li>2. beetroot;</li>
+                <li>3. carrots;</li>
+                <li>4. pear;</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        const categoryLinks = document.querySelectorAll('.category-link');
+
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const subList = this.nextElementSibling;
+                
+                if (subList) {
+                    subList.classList.toggle('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

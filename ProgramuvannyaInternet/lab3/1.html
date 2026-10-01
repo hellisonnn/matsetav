@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1 - Площа квадрата</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .calculator {
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        strong {
+            color: #d32f2f;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h3>Площа квадрата</h3>
+        
+        <label for="side">Довжина сторони:</label>
+        <input type="number" id="side" min="0" placeholder="Введіть довжину">
+        
+        <p>Площа: <strong id="area">0</strong></p>
+    </div>
+
+    <script>
+        const sideInput = document.getElementById('side');
+        const areaOutput = document.getElementById('area');
+
+        sideInput.addEventListener('input', function() {
+            const a = parseFloat(sideInput.value);
+            if (!isNaN(a) && a >= 0) {
+                areaOutput.textContent = Math.pow(a, 2).toFixed(2);
+            } else {
+                areaOutput.textContent = '0';
+            }
+        });
+    </script>
+
+</body>
+</html>

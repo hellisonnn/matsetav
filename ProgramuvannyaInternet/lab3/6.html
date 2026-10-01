@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 6 - Варіант 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        .item {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        span {
+            color: red;
+        }
+        input {
+            padding: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button id="toggle-state-btn">Перейти в кінцевий стан</button>
+
+        <div class="item">
+            <h2 id="subtitle">Мій заголовок</h2>
+        </div>
+
+        <div class="item">
+            <label>Поле вводу:</label>
+            <input type="text" id="user-input" value="Початкове значення">
+        </div>
+
+        <div class="item">
+            <p id="text-style">Цей текст змінить свій розмір та товщину.</p>
+        </div>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('toggle-state-btn');
+        const subtitle = document.getElementById('subtitle');
+        const userInput = document.getElementById('user-input');
+        const textStyle = document.getElementById('text-style');
+
+        let isFinalState = false;
+
+        const originalSubtitleContent = subtitle.innerHTML;
+
+        toggleBtn.addEventListener('click', () => {
+            if (!isFinalState) {
+                
+                subtitle.innerHTML = originalSubtitleContent + ' <span>(Важливо!)</span>';
+                
+                userInput.value = "Заповнено автоматично";
+                
+                textStyle.style.fontSize = '24px';
+                textStyle.style.fontWeight = 'bold';
+
+                toggleBtn.textContent = 'Перейти в початковий стан';
+            } else {
+
+                subtitle.innerHTML = originalSubtitleContent;
+                
+                userInput.value = "Початкове значення";
+                
+                textStyle.style.fontSize = '';
+                textStyle.style.fontWeight = 'normal'; // або ''
+
+                toggleBtn.textContent = 'Перейти в кінцевий стан';
+            }
+
+            isFinalState = !isFinalState;
+        });
+    </script>
+</body>
+</html>

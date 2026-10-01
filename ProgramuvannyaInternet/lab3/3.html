@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 3 - Інженерний калькулятор</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        .calculator {
+            width: 320px;
+            background: #e6f0fa;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .display {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: right;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        #calc-main {
+            font-size: 32px;
+            color: #333;
+            min-height: 38px;
+            overflow: hidden;
+        }
+
+        #calc-history {
+            font-size: 14px;
+            color: #888;
+            min-height: 16px;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+        }
+
+        button {
+            border: 1px solid #ccc;
+            padding: 15px 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            filter: brightness(0.9);
+        }
+
+        .num {
+            background: white;
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        .op.action {
+            background: #888;
+            color: white;
+        }
+
+        .btn-c {
+            background: #d32f2f;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-eq {
+            background: #0056b3;
+            color: white;
+            font-size: 24px;
+            grid-row: span 2; 
+        }
+
+        .eng-keypad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+        .eng-op {
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+        }
+
+        #toggle-mode-btn {
+            width: 100%;
+            margin-top: 15px;
+            background: #333;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <div class="display">
+            <div id="calc-main">0</div>
+            <div id="calc-history"></div>
+        </div>
+        
+        <div class="keypad">
+            <button class="num">7</button>
+            <button class="num">8</button>
+            <button class="num">9</button>
+            <button class="op action" id="btn-back">➔</button>
+            <button class="op btn-c" id="btn-c">C</button>
+
+            <button class="num">4</button>
+            <button class="num">5</button>
+            <button class="num">6</button>
+            <button class="op action">×</button>
+            <button class="op action">÷</button>
+
+            <button class="num">1</button>
+            <button class="num">2</button>
+            <button class="num">3</button>
+            <button class="op action">-</button>
+            <button class="op btn-eq" id="btn-eq">=</button>
+
+            <button class="op action" id="btn-sign">+/-</button>
+            <button class="num">0</button>
+            <button class="num">.</button>
+            <button class="op action">+</button>
+        </div>
+
+        <div class="eng-keypad" id="eng-keypad" style="display: none;">
+            <button class="eng-op" data-func="sqrt">√x</button>
+            <button class="eng-op" data-func="pow">x²</button>
+            <button class="eng-op" data-func="sin">sin</button>
+            <button class="eng-op" data-func="cos">cos</button>
+        </div>
+
+        <button id="toggle-mode-btn">Переключити на Інженерний</button>
+    </div>
+
+    <script>
+        const mainDisplay = document.getElementById('calc-main');
+        const historyDisplay = document.getElementById('calc-history');
+        
+        let currentInput = '0';
+        let previousInput = '';
+        let operator = null;
+
+        function updateDisplay() {
+            mainDisplay.textContent = currentInput;
+            historyDisplay.textContent = previousInput + (operator ? ' ' + operator : '');
+        }
+
+        document.querySelectorAll('.num').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const val = btn.textContent;
+                if (currentInput === '0' && val !== '.') {
+                    currentInput = val;
+                } else {
+                    if (val === '.' && currentInput.includes('.')) return;
+                    currentInput += val;
+                }
+                updateDisplay();
+            });
+        });
+
+        document.getElementById('btn-sign').addEventListener('click', () => {
+            if (currentInput !== '0' && currentInput !== '') {
+                currentInput = currentInput.startsWith('-') ? currentInput.slice(1) : '-' + currentInput;
+                updateDisplay();
+            }
+        });
+
+        document.getElementById('btn-c').addEventListener('click', () => {
+            currentInput = '0'; 
+            previousInput = ''; 
+            operator = null;
+            updateDisplay();
+        });
+
+        document.getElementById('btn-back').addEventListener('click', () => {
+            currentInput = currentInput.length > 1 ? currentInput.slice(0, -1) : '0';
+            updateDisplay();
+        });
+
+        document.querySelectorAll('.op.action').forEach(btn => {
+            const action = btn.textContent;
+            if (['+', '-', '×', '÷'].includes(action)) {
+                btn.addEventListener('click', () => {
+                    if (operator && currentInput !== '') calculate(); 
+                    operator = action;
+                    previousInput = currentInput || previousInput; 
+                    currentInput = '';
+                    updateDisplay();
+                });
+            }
+        });
+
+        document.getElementById('btn-eq').addEventListener('click', () => {
+            if (operator && currentInput !== '') {
+                calculate();
+                operator = null;
+                previousInput = '';
+                updateDisplay();
+            }
+        });
+
+        function calculate() {
+            const a = parseFloat(previousInput);
+            const b = parseFloat(currentInput);
+            if (isNaN(a) || isNaN(b)) return;
+            
+            let result = 0;
+            switch (operator) {
+                case '+': result = a + b; break;
+                case '-': result = a - b; break;
+                case '×': result = a * b; break;
+                case '÷': result = b === 0 ? 'Помилка' : a / b; break;
+            }
+            
+            if (result !== 'Помилка') {
+                historyDisplay.textContent = `${a} ${operator} ${b} = ${result}`;
+                currentInput = (Math.round(result * 100000000) / 100000000).toString(); 
+            } else {
+                historyDisplay.textContent = `${a} ${operator} ${b} =`;
+                currentInput = result;
+            }
+        }
+
+        const toggleBtn = document.getElementById('toggle-mode-btn');
+        const engKeypad = document.getElementById('eng-keypad');
+
+        toggleBtn.addEventListener('click', () => {
+            if (engKeypad.style.display === 'none') {
+                engKeypad.style.display = 'grid'; 
+                toggleBtn.textContent = 'Переключити на Простий';
+            } else {
+                engKeypad.style.display = 'none'; 
+                toggleBtn.textContent = 'Переключити на Інженерний';
+            }
+        });
+
+        document.querySelectorAll('.eng-op').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const val = parseFloat(currentInput);
+                if (isNaN(val)) return;
+                
+                const func = btn.getAttribute('data-func');
+                let res = 0;
+                
+                switch (func) {
+                    case 'sqrt': res = Math.sqrt(val); break;
+                    case 'pow': res = Math.pow(val, 2); break;
+                    case 'sin': res = Math.sin(val); break;
+                    case 'cos': res = Math.cos(val); break; 
+                }
+                
+                currentInput = (Math.round(res * 100000000) / 100000000).toString();
+                updateDisplay();
+            });
+        });
+    </script>
+</body>
+</html>
