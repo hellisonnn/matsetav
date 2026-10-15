@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1</title>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab5.html">Назад</a>
+    <h2>Завдання 1. Розбір e-mail</h2>
+    <script>
+        let s = "dwbyu@mail.ua";
+        let r = /^([a-z0-9]+)(\.[a-z0-9]+)*@([a-z0-9]+)(\.[a-z0-9]+)*$/i;
+        let a = s.match(r);
+        for (let i = 0; i < a.length; i++) {
+            document.writeln("<hr> a[" + i + "] " + a[i]);
+        }
+    </script>
+</body>
+</html>

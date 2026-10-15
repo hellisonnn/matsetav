@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 2</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 170px; font-weight: bold; }
+        
+        input.valid { border: 2px solid green; color: black; }
+        input.invalid { border: 2px solid red; color: red; }
+        .msg { margin-left: 10px; font-weight: bold; }
+        .valid-msg { color: green; }
+        .invalid-msg { color: red; }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab5.html">Назад</a>
+    <h2>Завдання 2. Форма та валідація</h2>
+    <form id="validationForm">
+        <div class="form-group">
+            <label>E-mail:</label>
+            <input type="text" id="email" placeholder="student@cnu.edu.ua">
+            <span id="email-msg" class="msg"></span>
+        </div>
+        
+        <div class="form-group">
+            <label>Ім'я та прізвище:</label>
+            <input type="text" id="fullname" placeholder="Владислав Мацета">
+            <span id="fullname-msg" class="msg"></span>
+        </div>
+        
+        <div class="form-group">
+            <label>Логін:</label>
+            <input type="text" id="login" placeholder="Тільки латина">
+            <span id="login-msg" class="msg"></span>
+        </div>
+        
+        <div class="form-group">
+            <label>Пароль:</label>
+            <input type="password" id="password">
+            <span id="password-msg" class="msg"></span>
+        </div>
+        
+        <div class="form-group">
+            <label>Поштовий індекс:</label>
+            <input type="text" id="zip" placeholder="12345">
+            <span id="zip-msg" class="msg"></span>
+        </div>
+        
+        <button type="button" onclick="validateForm()">Перевірити</button>
+    </form>
+
+    <script>
+        function checkField(id, regex, errorMsg) {
+            const input = document.getElementById(id);
+            const msgSpan = document.getElementById(id + '-msg');
+            const isValid = regex.test(input.value);
+
+            if (isValid) {
+                input.className = 'valid';
+                msgSpan.className = 'msg valid-msg';
+                msgSpan.innerHTML = '&#10004;';
+            } else {
+                input.className = 'invalid';
+                msgSpan.className = 'msg invalid-msg';
+                msgSpan.textContent = errorMsg; 
+            }
+        }
+
+        function validateForm() {
+            checkField('email', /.+@cnu\.edu\.ua$/, 'Повинен містити @cnu.edu.ua');
+            checkField('fullname', /^[A-ZА-ЯІЇЄҐ][a-zа-яіїєґ']+\s[A-ZА-ЯІЇЄҐ][a-zа-яіїєґ']+$/, 'Формат: Ім\'я Прізвище (напр. Владислав Мацета)');
+            checkField('login', /^[a-zA-Z]+$/, 'Дозволена тільки латина');
+            checkField('password', /^(?=.*[a-zA-Zа-яА-ЯіїєґІЇЄҐ])(?=.*\d)(?=.*[_\-!@#$%^&*]).{8,}$/, 'Мін. 8 символів, 1 буква, 1 цифра, 1 спецсимвол');
+            checkField('zip', /^\d{5}$/, 'Повинен складатися з 5 цифр');
+        }
+    </script>
+</body>
+</html>
