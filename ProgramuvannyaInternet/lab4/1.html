@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        .question-block { background: #fff; padding: 15px; margin-bottom: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h3 { margin-top: 0; font-size: 1.1em; }
+        button { padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .total-score { font-size: 1.2em; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab4.html">Назад</a>
+    <h2>Тестування</h2>
+    <form id="testForm">
+        
+        <div class="question-block">
+            <h3>1. Який тег використовується для підключення JavaScript?</h3>
+            <label><input type="radio" name="q1" value="0" data-text="&lt;js&gt;"> &lt;js&gt;</label><br>
+            <label><input type="radio" name="q1" value="1" data-text="&lt;script&gt;"> &lt;script&gt;</label><br>
+            <label><input type="radio" name="q1" value="0" data-text="&lt;javascript&gt;"> &lt;javascript&gt;</label><br>
+            <label><input type="radio" name="q1" value="0" data-text="&lt;code&gt;"> &lt;code&gt;</label>
+        </div>
+
+        <div class="question-block">
+            <h3>2. Як створити змінну в сучасному JavaScript?</h3>
+            <label><input type="radio" name="q2" value="1" data-text="let"> let</label><br>
+            <label><input type="radio" name="q2" value="0" data-text="variable"> variable</label><br>
+            <label><input type="radio" name="q2" value="0" data-text="v"> v</label><br>
+            <label><input type="radio" name="q2" value="0" data-text="dim"> dim</label>
+        </div>
+
+        <div class="question-block">
+            <h3>3. Які з цих типів даних є примітивними в JS? (Оберіть всі правильні)</h3>
+            <label><input type="checkbox" name="q3" value="1" data-text="String"> String</label><br>
+            <label><input type="checkbox" name="q3" value="-1" data-text="Array"> Array</label><br>
+            <label><input type="checkbox" name="q3" value="1" data-text="Boolean"> Boolean</label><br>
+            <label><input type="checkbox" name="q3" value="-1" data-text="Object"> Object</label>
+        </div>
+
+        <div class="question-block">
+            <h3>4. Які існують цикли в JavaScript? (Оберіть всі правильні)</h3>
+            <label><input type="checkbox" name="q4" value="1" data-text="for"> for</label><br>
+            <label><input type="checkbox" name="q4" value="1" data-text="while"> while</label><br>
+            <label><input type="checkbox" name="q4" value="1" data-text="do...while"> do...while</label><br>
+            <label><input type="checkbox" name="q4" value="-1" data-text="loop...end"> loop...end</label>
+        </div>
+
+        <div class="question-block">
+            <h3>5. Який метод виводить повідомлення в консоль?</h3>
+            <select name="q5">
+                <option value="" data-text="Не обрано">-- Оберіть варіант --</option>
+                <option value="0" data-text="print()">print()</option>
+                <option value="0" data-text="echo()">echo()</option>
+                <option value="1" data-text="console.log()">console.log()</option>
+                <option value="0" data-text="document.write()">document.write()</option>
+            </select>
+        </div>
+
+        <div class="question-block">
+            <h3>6. Які методи використовуються для пошуку елементів в DOM?</h3>
+            <select name="q6" multiple size="4" style="width: 250px;">
+                <option value="1" data-text="getElementById()">getElementById()</option>
+                <option value="-1" data-text="findElement()">findElement()</option>
+                <option value="1" data-text="querySelector()">querySelector()</option>
+                <option value="-1" data-text="searchNode()">searchNode()</option>
+            </select>
+            <br><small><i>(Утримуйте Ctrl/Cmd для вибору декількох варіантів)</i></small>
+        </div>
+
+        <div class="question-block">
+            <h3>7. Введіть результат виразу: 2 + '2' в JavaScript?</h3>
+            <input type="text" name="q7" placeholder="Ваша відповідь">
+        </div>
+
+        <button type="button" onclick="finishTest()">Завершити тестування</button>
+    </form>
+
+    <div id="resultContainer" style="display:none;">
+        <table id="resultTable">
+            <thead>
+                <tr>
+                    <th>Поставлене запитання</th>
+                    <th>Обрані варіанти відповіді</th>
+                    <th>Отриманий бал</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="total-score" id="totalScoreDisplay"></div>
+    </div>
+
+    <script>
+        // Функція для безпечного виведення тексту з дужками в таблицю
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, function(tag) {
+                const charsToReplace = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                };
+                return charsToReplace[tag] || tag;
+            });
+        }
+
+        function finishTest() {
+            const form = document.getElementById('testForm');
+            let totalScore = 0;
+            let resultsHTML = '';
+
+            function processQuestion(questionText, inputs, isText = false) {
+                let score = 0;
+                let answers = [];
+
+                if (isText) {
+                    let val = inputs.value.trim();
+                    answers.push(val === '' ? 'Немає відповіді' : val);
+                    
+                    if (val === '22') {
+                        score = 1;
+                    }
+                } else if (inputs instanceof NodeList || Array.isArray(inputs)) {
+                    inputs.forEach(input => {
+                        if (input.checked) {
+                            answers.push(input.getAttribute('data-text'));
+                            score += parseFloat(input.value);
+                        }
+                    });
+                } else if (inputs.tagName === 'SELECT') {
+                    Array.from(inputs.selectedOptions).forEach(option => {
+                        if (option.value !== "") {
+                            answers.push(option.getAttribute('data-text'));
+                            score += parseFloat(option.value);
+                        }
+                    });
+                }
+
+                if (answers.length === 0) answers.push('Не обрано');
+                
+                if (score < 0) score = 0; 
+                
+                totalScore += score;
+
+                // Застосовуємо екранування, щоб браузер не ламав таблицю
+                const safeAnswers = escapeHTML(answers.join(', '));
+
+                resultsHTML += `
+                    <tr>
+                        <td>${questionText}</td>
+                        <td>${safeAnswers}</td>
+                        <td>${score}</td>
+                    </tr>
+                `;
+            }
+
+            const q1 = document.getElementsByName('q1');
+            const q2 = document.getElementsByName('q2');
+            const q3 = document.getElementsByName('q3');
+            const q4 = document.getElementsByName('q4');
+            const q5 = document.getElementsByName('q5')[0];
+            const q6 = document.getElementsByName('q6')[0];
+            const q7 = document.getElementsByName('q7')[0];
+
+            processQuestion('1. Який тег використовується для підключення JavaScript?', q1);
+            processQuestion('2. Як створити змінну в сучасному JavaScript?', q2);
+            processQuestion('3. Які з цих типів даних є примітивними в JS?', q3);
+            processQuestion('4. Які існують цикли в JavaScript?', q4);
+            processQuestion('5. Який метод виводить повідомлення в консоль?', q5);
+            processQuestion('6. Які методи використовуються для пошуку елементів в DOM?', q6);
+            processQuestion('7. Введіть результат виразу: 2 + "2" в JavaScript?', q7, true);
+
+            document.querySelector('#resultTable tbody').innerHTML = resultsHTML;
+            document.getElementById('totalScoreDisplay').innerText = `Загальний бал: ${totalScore}`;
+            document.getElementById('resultContainer').style.display = 'block';
+            
+            form.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
