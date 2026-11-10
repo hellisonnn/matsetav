@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .text-input {
+            width: 300px;
+        }
+        .char-input {
+            width: 50px;
+            text-align: center;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result4 {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 4</h2>
+    <p>Реалізуйте функцію, яка повертає кількість входжень певного символу в рядок.</p>
+
+    <div class="form-group">
+        <label for="stringInput4">Введіть рядок: </label><br>
+        <input type="text" id="stringInput4" class="text-input" placeholder='Наприклад: hello world' value="hello world">
+    </div>
+
+    <div class="form-group">
+        <label for="charInput4">Введіть символ: </label><br>
+        <input type="text" id="charInput4" class="char-input" maxlength="1" placeholder='o' value="o">
+    </div>
+    
+    <button onclick="displayCount()">Порахувати кількість</button>
+
+    <div id="result4"></div>
+
+    <script>
+        function countCharacter(str, char) {
+            if (char === "") return 0;
+            return str.split(char).length - 1;
+        }
+
+        function displayCount() {
+            let text = document.getElementById("stringInput4").value;
+            let searchChar = document.getElementById("charInput4").value;
+            let resultDiv = document.getElementById("result4");
+            
+            if (searchChar === "") {
+                resultDiv.style.color = "red";
+                resultDiv.innerText = "Помилка: введіть символ для пошуку!";
+                return;
+            }
+
+            let count = countCharacter(text, searchChar);
+            
+            resultDiv.style.color = "black";
+            resultDiv.innerText = "Кількість входжень символу '" + searchChar + "': " + count;
+        }
+    </script>
+
+</body>
+</html>

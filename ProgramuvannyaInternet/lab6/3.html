@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .text-input {
+            width: 300px;
+        }
+        .char-input {
+            width: 50px;
+            text-align: center;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result3 {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 3</h2>
+    <p>Напишіть функцію, яка приймає рядок і символ, і повертає індекс першого входження цього символу в рядку (або -1, якщо не знайдено).</p>
+
+    <div class="form-group">
+        <label for="stringInput3">Введіть рядок: </label><br>
+        <input type="text" id="stringInput3" class="text-input" placeholder="Наприклад: Інженерія програмного забезпечення">
+    </div>
+
+    <div class="form-group">
+        <label for="charInput">Введіть символ: </label><br>
+        <input type="text" id="charInput" class="char-input" maxlength="1" placeholder="ж">
+    </div>
+    
+    <button onclick="displayIndex()">Знайти індекс</button>
+
+    <div id="result3"></div>
+
+    <script>
+        function getCharIndex(str, char) {
+            return str.indexOf(char);
+        }
+
+        function displayIndex() {
+            let text = document.getElementById("stringInput3").value;
+            let searchChar = document.getElementById("charInput").value;
+            let resultDiv = document.getElementById("result3");
+            
+            if (searchChar === "") {
+                resultDiv.style.color = "red";
+                resultDiv.innerText = "Помилка: введіть символ для пошуку!";
+                return;
+            }
+
+            let index = getCharIndex(text, searchChar);
+            
+            resultDiv.style.color = "black";
+            if (index !== -1) {
+                resultDiv.innerText = "Індекс першого входження символу '" + searchChar + "': " + index;
+            } else {
+                resultDiv.innerText = "Символ '" + searchChar + "' не знайдено (результат: -1).";
+            }
+        }
+    </script>
+
+</body>
+</html>

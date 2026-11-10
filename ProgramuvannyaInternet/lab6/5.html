@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result5 {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 5</h2>
+    <p>Напишіть функцію, яка змінює місцями кожні два сусідні символи в рядку.</p>
+
+    <div class="form-group">
+        <label for="stringInput5">Введіть рядок: </label><br>
+        <input type="text" id="stringInput5" placeholder='Наприклад: abcdef' value="abcdef">
+    </div>
+    
+    <button onclick="displaySwapped()">Змінити символи</button>
+
+    <div id="result5"></div>
+
+    <script>
+        function swapAdjacentChars(str) {
+            let chars = str.split('');
+            
+            for (let i = 0; i < chars.length - 1; i += 2) {
+                let temp = chars[i];
+                chars[i] = chars[i + 1];
+                chars[i + 1] = temp;
+            }
+            
+            return chars.join('');
+        }
+
+        function displaySwapped() {
+            let text = document.getElementById("stringInput5").value;
+            let resultDiv = document.getElementById("result5");
+            
+            if (text === "") {
+                resultDiv.style.color = "red";
+                resultDiv.innerText = "Помилка: введіть рядок!";
+                return;
+            }
+
+            let resultString = swapAdjacentChars(text);
+            
+            resultDiv.style.color = "green";
+            resultDiv.innerText = "Результат: " + resultString;
+        }
+    </script>
+
+</body>
+</html>

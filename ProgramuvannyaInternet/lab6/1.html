@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 1</h2>
+    <p>Напишіть функцію, яка приймає рядок і повертає його довжину.</p>
+
+    <div class="form-group">
+        <label for="stringInput">Введіть рядок: </label>
+        <input type="text" id="stringInput" placeholder="Ваш текст тут...">
+    </div>
+    
+    <button onclick="displayLength()">Знайти довжину</button>
+
+    <div id="result"></div>
+
+    <script>
+        function getStringLength(str) {
+            return str.length;
+        }
+
+        function displayLength() {
+            let inputText = document.getElementById("stringInput").value;
+            
+            let length = getStringLength(inputText);
+            
+            document.getElementById("result").innerText = "Довжина рядка: " + length;
+        }
+    </script>
+
+</body>
+</html>

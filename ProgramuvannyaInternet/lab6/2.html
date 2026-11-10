@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .result-block {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #28a745;
+            max-width: 400px;
+        }
+        .result-line {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 2</h2>
+    <p>Створіть функцію, яка приймає рядок і повертає його у верхньому та нижньому регістрах.</p>
+
+    <div class="form-group">
+        <label for="stringInput2">Введіть рядок: </label>
+        <input type="text" id="stringInput2" placeholder="Наприклад: Привіт, Світ!">
+    </div>
+    
+    <button onclick="displayConverted()">Змінити регістр</button>
+
+    <div id="result2" class="result-block" style="display: none;">
+        <div class="result-line" id="upperResult"></div>
+        <div class="result-line" id="lowerResult"></div>
+    </div>
+
+    <script>
+        function convertStringCases(str) {
+            return {
+                upperCase: str.toUpperCase(),
+                lowerCase: str.toLowerCase()
+            };
+        }
+
+        function displayConverted() {
+            let inputText = document.getElementById("stringInput2").value;
+            
+            let convertedStr = convertStringCases(inputText);
+            
+            document.getElementById("upperResult").innerText = "Верхній регістр: " + convertedStr.upperCase;
+            document.getElementById("lowerResult").innerText = "Нижній регістр: " + convertedStr.lowerCase;
+            
+            document.getElementById("result2").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 7</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .text-input {
+            width: 300px;
+        }
+        .number-input {
+            width: 80px;
+            text-align: center;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #138496;
+        }
+        #result7 {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 7</h2>
+    <p>Напишіть функцію скорочення рядка. Якщо довжина більша за максимальну, зайві символи відкидаються і додається "...".</p>
+
+    <div class="form-group">
+        <label for="stringInput7">Введіть рядок: </label><br>
+        <input type="text" id="stringInput7" class="text-input" value="Hello, world!">
+    </div>
+
+    <div class="form-group">
+        <label for="lengthInput">Максимальна довжина: </label><br>
+        <input type="number" id="lengthInput" class="number-input" value="8" min="3">
+    </div>
+    
+    <button onclick="displayTruncated()">Скоротити рядок</button>
+
+    <div id="result7"></div>
+
+    <script>
+        function truncate(str, maxlength) {
+            if (str.length > maxlength) {
+                return str.slice(0, maxlength - 3) + "...";
+            }
+            return str;
+        }
+
+        function displayTruncated() {
+            let text = document.getElementById("stringInput7").value;
+            let maxLength = parseInt(document.getElementById("lengthInput").value, 10);
+            let resultDiv = document.getElementById("result7");
+            
+            if (isNaN(maxLength) || maxLength < 3) {
+                resultDiv.style.color = "red";
+                resultDiv.innerText = "Помилка: введіть коректну максимальну довжину (мінімум 3).";
+                return;
+            }
+
+            let resultString = truncate(text, maxLength);
+            
+            resultDiv.style.color = "black";
+            resultDiv.innerText = "Результат: " + resultString;
+        }
+    </script>
+
+</body>
+</html>

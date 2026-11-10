@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #20c997;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #1aa179;
+        }
+        #result10 {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 10</h2>
+    <p>Створіть функцію, яка перевіряє, чи є підрядок в рядку, що є паліндромом (мінімальна довжина 3 символи).</p>
+
+    <div class="form-group">
+        <label for="stringInput10">Введіть рядок: </label><br>
+        <input type="text" id="stringInput10" value="abcbad">
+    </div>
+    
+    <button onclick="displayPalindromeCheck()">Перевірити на паліндром</button>
+
+    <div id="result10"></div>
+
+    <script>
+        function isPalindrome(str) {
+            return str === str.split('').reverse().join('');
+        }
+
+        function hasPalindromeSubstring(str) {
+            if (str.length < 3) return false;
+            
+            for (let i = 0; i <= str.length - 3; i++) {
+                for (let j = i + 3; j <= str.length; j++) {
+                    let sub = str.slice(i, j);
+                    
+                    if (isPalindrome(sub)) {
+                        return true; 
+                    }
+                }
+            }
+            return false;
+        }
+
+        function displayPalindromeCheck() {
+            let text = document.getElementById("stringInput10").value;
+            let resultDiv = document.getElementById("result10");
+            
+            if (text === "") {
+                resultDiv.style.color = "red";
+                resultDiv.innerText = "Помилка: введіть рядок!";
+                return;
+            }
+
+            let result = hasPalindromeSubstring(text);
+            
+            if (result) {
+                resultDiv.style.color = "green";
+                resultDiv.innerText = "Результат: true (Знайдено паліндром)";
+            } else {
+                resultDiv.style.color = "blue";
+                resultDiv.innerText = "Результат: false (Паліндромів не знайдено)";
+            }
+        }
+    </script>
+
+</body>
+</html>

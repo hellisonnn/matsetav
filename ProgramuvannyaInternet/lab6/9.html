@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+            width: 450px;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #f0ad4e;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background-color: #ec971f;
+        }
+        #result9 {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 9</h2>
+    <p>Створіть функцію, яка замінює всі входження слова "JavaScript" на "JS" у рядку[cite: 10].</p>
+
+    <div class="form-group">
+        <label for="stringInput9">Введіть рядок: </label><br>
+        <input type="text" id="stringInput9" value="Я вивчаю JavaScript. JavaScript — це дуже круто!">
+    </div>
+    
+    <button onclick="displayReplacedText()">Замінити слово</button>
+
+    <div id="result9"></div>
+
+    <script>
+        function replaceJavaScript(str) {
+            return str.replaceAll("JavaScript", "JS");
+        }
+
+        function displayReplacedText() {
+            let text = document.getElementById("stringInput9").value;
+            let resultDiv = document.getElementById("result9");
+            
+            if (text === "") {
+                resultDiv.style.color = "red";
+                resultDiv.innerText = "Помилка: введіть рядок!";
+                return;
+            }
+
+            let resultString = replaceJavaScript(text);
+            
+            resultDiv.style.color = "green";
+            resultDiv.innerText = "Результат: " + resultString;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+            width: 400px;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #c82333;
+        }
+        #result6 {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 6</h2>
+    <p>Функція перевірки спаму в переданому рядку[cite: 6].</p>
+
+    <div class="form-group">
+        <label for="stringInput6">Введіть текст повідомлення: </label><br>
+        <input type="text" id="stringInput6" placeholder="Наприклад: Отримайте 100% безкоштовно прямо зараз!">
+    </div>
+    
+    <button onclick="displaySpamCheck()">Перевірити на спам</button>
+
+    <div id="result6"></div>
+
+    <script>
+        function checkSpam(message) {
+            let lowerCaseMessage = message.toLowerCase();
+            
+            const spamPhrases = [
+                "100% безкоштовно", 
+                "збільшення продажів", 
+                "тільки сьогодні", 
+                "не видаляйте"
+            ];
+
+            return spamPhrases.some(phrase => lowerCaseMessage.includes(phrase));
+        }
+
+        function displaySpamCheck() {
+            let text = document.getElementById("stringInput6").value;
+            let resultDiv = document.getElementById("result6");
+            
+            if (text === "") {
+                resultDiv.style.color = "orange";
+                resultDiv.innerText = "Введіть текст для перевірки.";
+                return;
+            }
+
+            let isSpam = checkSpam(text);
+            
+            if (isSpam) {
+                resultDiv.style.color = "red";
+                resultDiv.innerText = "Результат: true (Виявлено спам!)";
+            } else {
+                resultDiv.style.color = "green";
+                resultDiv.innerText = "Результат: false (Спаму не знайдено)";
+            }
+        }
+    </script>
+
+</body>
+</html>

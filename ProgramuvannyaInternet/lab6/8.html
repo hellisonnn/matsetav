@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+            background-color: #6f42c1;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #59339d;
+        }
+        #result8 {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab6.html">Назад</a>
+    <h2>Завдання 8</h2>
+    <p>Напишіть функцію, яка видаляє всі голосні літери з рядка.</p>
+
+    <div class="form-group">
+        <label for="stringInput8">Введіть рядок: </label><br>
+        <input type="text" id="stringInput8" value="Hello, World!">
+    </div>
+    
+    <button onclick="displayNoVowels()">Видалити голосні</button>
+
+    <div id="result8"></div>
+
+    <script>
+        function removeVowels(str) {
+            return str.replace(/[aeiouyаеєиіїоуюя]/gi, '');
+        }
+
+        function displayNoVowels() {
+            let text = document.getElementById("stringInput8").value;
+            let resultDiv = document.getElementById("result8");
+            
+            if (text === "") {
+                resultDiv.style.color = "red";
+                resultDiv.innerText = "Помилка: введіть рядок!";
+                return;
+            }
+
+            let resultString = removeVowels(text);
+            
+            resultDiv.style.color = "green";
+            resultDiv.innerText = "Результат: " + resultString;
+        }
+    </script>
+
+</body>
+</html>
