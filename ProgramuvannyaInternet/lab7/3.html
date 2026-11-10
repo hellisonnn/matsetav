@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 5px;
+            margin-top: 5px;
+            width: 250px;
+            display: block;
+        }
+        button {
+            padding: 7px 15px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result3 {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #004085;
+            background-color: #cce5ff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #b8daff;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab7.html">Назад</a>
+    <h2>Завдання 3: Клас Car</h2>
+
+    <div class="form-group">
+        <label for="brandInput">Марка (brand):</label>
+        <input type="text" id="brandInput" placeholder="Наприклад: Porsche" value="Porsche">
+    </div>
+
+    <div class="form-group">
+        <label for="modelInput">Модель (model):</label>
+        <input type="text" id="modelInput" placeholder="Наприклад: 911" value="911">
+    </div>
+
+    <div class="form-group">
+        <label for="yearInput">Рік (year):</label>
+        <input type="number" id="yearInput" placeholder="Наприклад: 2023" value="2023">
+    </div>
+    
+    <button onclick="displayCarInfo()">Вивести інформацію</button>
+
+    <div id="result3" style="display: none;"></div>
+
+    <script>
+        class Car {
+            constructor(brand, model, year) {
+                this.brand = brand;
+                this.model = model;
+                this.year = year;
+            }
+
+            info() {
+                return `Авто: ${this.brand} ${this.model}, ${this.year} року.`;
+            }
+        }
+
+        function displayCarInfo() {
+            let brand = document.getElementById("brandInput").value;
+            let model = document.getElementById("modelInput").value;
+            let year = document.getElementById("yearInput").value;
+            let resultDiv = document.getElementById("result3");
+
+            if (brand === "" || model === "" || year === "") {
+                resultDiv.style.color = "red";
+                resultDiv.style.backgroundColor = "#f8d7da";
+                resultDiv.style.borderColor = "#f5c6cb";
+                resultDiv.innerText = "Будь ласка, заповніть усі поля!";
+                resultDiv.style.display = "block";
+                return;
+            }
+
+            const myCar = new Car(brand, model, year);
+
+            resultDiv.style.color = "#004085";
+            resultDiv.style.backgroundColor = "#cce5ff";
+            resultDiv.style.borderColor = "#b8daff";
+            resultDiv.innerText = myCar.info(); 
+            resultDiv.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 5px;
+            margin-top: 5px;
+            width: 250px;
+            display: block;
+        }
+        button {
+            padding: 7px 15px;
+            cursor: pointer;
+            background-color: #17a2b8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #138496;
+        }
+        #result4 {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #0f5132;
+            background-color: #d1e7dd;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #badbcc;
+            display: none;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab7.html">Назад</a>
+    <h2>Завдання 4: Наслідування (ElectricCar)</h2>
+
+    <div class="form-group">
+        <label for="brandInput">Марка (brand):</label>
+        <input type="text" id="brandInput" placeholder="Наприклад: Tesla" value="Porsche">
+    </div>
+
+    <div class="form-group">
+        <label for="modelInput">Модель (model):</label>
+        <input type="text" id="modelInput" placeholder="Наприклад: Model 3" value="Taycan">
+    </div>
+
+    <div class="form-group">
+        <label for="yearInput">Рік (year):</label>
+        <input type="number" id="yearInput" placeholder="Наприклад: 2022" value="2023">
+    </div>
+
+    <div class="form-group">
+        <label for="batteryInput">Батарея (battery, kWh):</label>
+        <input type="number" id="batteryInput" placeholder="Наприклад: 75" value="93">
+    </div>
+    
+    <button onclick="displayElectricCarInfo()">Створити електромобіль</button>
+
+    <div id="result4"></div>
+
+    <script>
+        class Car {
+            constructor(brand, model, year) {
+                this.brand = brand;
+                this.model = model;
+                this.year = year;
+            }
+
+            info() {
+                return `Авто: ${this.brand} ${this.model}, ${this.year} року.`;
+            }
+        }
+
+        class ElectricCar extends Car {
+            constructor(brand, model, year, battery) {
+                super(brand, model, year);
+                this.battery = battery;
+            }
+
+            charge() {
+                return `${this.brand} ${this.model} заряджається... Батарея: ${this.battery} kWh`;
+            }
+        }
+
+        function displayElectricCarInfo() {
+            let brand = document.getElementById("brandInput").value;
+            let model = document.getElementById("modelInput").value;
+            let year = document.getElementById("yearInput").value;
+            let battery = document.getElementById("batteryInput").value;
+            let resultDiv = document.getElementById("result4");
+
+            if (brand === "" || model === "" || year === "" || battery === "") {
+                resultDiv.style.color = "#842029";
+                resultDiv.style.backgroundColor = "#f8d7da";
+                resultDiv.style.borderColor = "#f5c6cb";
+                resultDiv.innerText = "Будь ласка, заповніть усі поля!";
+                resultDiv.style.display = "block";
+                return;
+            }
+
+            const myEV = new ElectricCar(brand, model, year, battery);
+
+            resultDiv.style.color = "#0f5132";
+            resultDiv.style.backgroundColor = "#d1e7dd";
+            resultDiv.style.borderColor = "#badbcc";
+            resultDiv.innerHTML = `
+                <strong>Інформація:</strong> ${myEV.info()} <br>
+                <strong>Статус:</strong> ${myEV.charge()}
+            `;
+            resultDiv.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

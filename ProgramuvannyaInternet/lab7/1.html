@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .time-display {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: monospace;
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+        }
+        .controls {
+            margin-bottom: 15px;
+        }
+        input[type="number"] {
+            padding: 8px;
+            width: 150px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab7.html">Назад</a>
+    <h2>Завдання 1: Об'єкт часу</h2>
+
+    <div id="timeOutput" class="time-display">00:00:00</div>
+
+    <div class="controls">
+        <label for="secondsInput">Додати/відняти секунди: </label>
+        <input type="number" id="secondsInput" placeholder="Кількість секунд">
+        <button onclick="addSecondsToTime()">Змінити час</button>
+    </div>
+
+    <script>
+        class TimeManager {
+            constructor(hours, minutes, seconds) {
+                this.hours = hours || 0;
+                this.minutes = minutes || 0;
+                this.seconds = seconds || 0;
+                this.normalizeTime();
+            }
+
+            getFormattedTime() {
+                let h = String(this.hours).padStart(2, '0');
+                let m = String(this.minutes).padStart(2, '0');
+                let s = String(this.seconds).padStart(2, '0');
+                return `${h}:${m}:${s}`;
+            }
+
+            addSeconds(sec) {
+                this.seconds += sec;
+                this.normalizeTime();
+            }
+
+            normalizeTime() {
+                let totalSeconds = (this.hours * 3600) + (this.minutes * 60) + this.seconds;
+
+                if (totalSeconds < 0) {
+                    totalSeconds = 86400 + (totalSeconds % 86400); 
+                }
+
+                this.hours = Math.floor(totalSeconds / 3600) % 24;
+                this.minutes = Math.floor((totalSeconds % 3600) / 60);
+                this.seconds = totalSeconds % 60;
+            }
+        }
+
+        let now = new Date();
+        
+        let myTime = new TimeManager(
+            now.getHours(), 
+            now.getMinutes(), 
+            now.getSeconds()
+        );
+
+        function updateDisplay() {
+            document.getElementById("timeOutput").innerText = myTime.getFormattedTime();
+        }
+
+        updateDisplay();
+
+        function addSecondsToTime() {
+            let secValue = parseInt(document.getElementById("secondsInput").value, 10);
+            
+            if (!isNaN(secValue)) {
+                myTime.addSeconds(secValue);
+                updateDisplay();
+                document.getElementById("secondsInput").value = '';
+            } else {
+                alert("Будь ласка, введіть числове значення секунд.");
+            }
+        }
+    </script>
+
+</body>
+</html>

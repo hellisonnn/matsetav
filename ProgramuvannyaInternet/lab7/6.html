@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 500px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            flex: 1;
+        }
+        .btn-show {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .btn-show:hover {
+            background-color: #0b5ed7;
+        }
+        .btn-clear {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-clear:hover {
+            background-color: #5c636a;
+        }
+        #outputArea {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-left: 5px solid #0d6efd;
+            border-radius: 4px;
+            display: none;
+            line-height: 1.6;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab7.html">Назад</a>
+    <div class="container">
+        <h2>Завдання 6: Варіант 3 (Rectangle & Square)</h2>
+
+        <div class="form-group">
+            <label for="widthInput">Введіть ширину (width):</label>
+            <input type="number" id="widthInput" placeholder="Наприклад: 10">
+        </div>
+
+        <div class="form-group">
+            <label for="heightInput">Введіть висоту (height):</label>
+            <input type="number" id="heightInput" placeholder="Наприклад: 10">
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-show" onclick="processFigure()">Показати інформацію</button>
+            <button class="btn-clear" onclick="clearFields()">Очистити поля</button>
+        </div>
+
+        <div id="outputArea"></div>
+    </div>
+
+    <script>
+        class Rectangle {
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            getArea() {
+                return this.width * this.height;
+            }
+
+            getPerimeter() {
+                return 2 * (this.width + this.height);
+            }
+
+            static getInfo() {
+                return "Це фігура, яка має 4 сторони.";
+            }
+        }
+
+        class Square extends Rectangle {
+            constructor(side) {
+                super(side, side);
+            }
+
+            isSquareValid() {
+                return this.width === this.height;
+            }
+        }
+
+        function processFigure() {
+            let width = parseFloat(document.getElementById("widthInput").value);
+            let height = parseFloat(document.getElementById("heightInput").value);
+            let output = document.getElementById("outputArea");
+
+            if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+                output.innerHTML = "<span class='error'>Будь ласка, введіть коректні додатні числа для сторін!</span>";
+                output.style.display = "block";
+                return;
+            }
+
+            let resultHTML = "";
+            
+            resultHTML += `<strong>Загальна інформація:</strong> ${Rectangle.getInfo()}<br><hr>`;
+
+            if (width === height) {
+                let mySquare = new Square(width);
+                
+                resultHTML += `<strong>Тип фігури:</strong> Квадрат (Square)<br>`;
+                resultHTML += `<strong>Сторона:</strong> ${mySquare.width}<br>`;
+                resultHTML += `<strong>Перевірка сторін:</strong> ${mySquare.isSquareValid() ? "Всі сторони рівні" : "Помилка"}<br>`;
+                resultHTML += `<strong>Площа:</strong> ${mySquare.getArea()}<br>`;
+                resultHTML += `<strong>Периметр:</strong> ${mySquare.getPerimeter()}`;
+            } else {
+                let myRectangle = new Rectangle(width, height);
+                
+                resultHTML += `<strong>Тип фігури:</strong> Прямокутник (Rectangle)<br>`;
+                resultHTML += `<strong>Ширина:</strong> ${myRectangle.width}<br>`;
+                resultHTML += `<strong>Висота:</strong> ${myRectangle.height}<br>`;
+                resultHTML += `<strong>Площа:</strong> ${myRectangle.getArea()}<br>`;
+                resultHTML += `<strong>Периметр:</strong> ${myRectangle.getPerimeter()}`;
+            }
+
+            output.innerHTML = resultHTML;
+            output.style.display = "block";
+        }
+
+        function clearFields() {
+            document.getElementById("widthInput").value = "";
+            document.getElementById("heightInput").value = "";
+            let output = document.getElementById("outputArea");
+            output.innerHTML = "";
+            output.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

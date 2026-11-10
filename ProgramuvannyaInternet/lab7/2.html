@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .task-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+        .task-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            padding: 5px;
+            margin-right: 10px;
+            width: 120px;
+        }
+        button {
+            padding: 6px 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <a style="display: block; text-align: right;" href="lab7.html">Назад</a>
+    <div class="task-section">
+        <div class="task-text">Завдання 2.1.Виведення поточної дати, дня тижня і часу</div>
+        <button onclick="displayCurrentDateTime()">Виконати</button>
+        <div id="result2_1" class="result" style="display: none;"></div>
+    </div>
+
+    <div class="task-section">
+        <div class="task-text">Завдання 2.2. Останній день місяця</div>
+        <input type="number" id="yearInput" placeholder="Рік (напр. 2026)">
+        <input type="number" id="monthInput" placeholder="Місяць (1-12)" min="1" max="12">
+        <button onclick="displayLastDay()">Знайти день</button>
+        <div id="result2_2" class="result" style="display: none;"></div>
+    </div>
+
+    <div class="task-section">
+        <div class="task-text">Завдання 2.3. Секунди від початку та до кінця дня</div>
+        <button onclick="displaySecondsInfo()">Отримати секунди</button>
+        <div id="result2_3" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        function displayCurrentDateTime() {
+            const now = new Date();
+            
+            const months = ["січня", "лютого", "березня", "квітня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"];
+            const daysOfWeek = ["неділя", "понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота"];
+
+            let day = now.getDate();
+            let monthName = months[now.getMonth()];
+            let year = now.getFullYear();
+            let dayOfWeekName = daysOfWeek[now.getDay()];
+            
+            let hours = String(now.getHours()).padStart(2, '0');
+            let minutes = String(now.getMinutes()).padStart(2, '0');
+
+            let htmlOutput = `
+                Дата: ${day} ${monthName} ${year} року<br>
+                День тижня: ${dayOfWeekName}<br>
+                Час: ${hours}:${minutes}
+            `;
+
+            let resDiv = document.getElementById("result2_1");
+            resDiv.innerHTML = htmlOutput;
+            resDiv.style.display = "block";
+        }
+        
+        function getLastDayOfMonth(year, month) {
+            let date = new Date(year, month, 0);
+            return date.getDate();
+        }
+
+        function displayLastDay() {
+            let y = parseInt(document.getElementById("yearInput").value, 10);
+            let m = parseInt(document.getElementById("monthInput").value, 10);
+            let resDiv = document.getElementById("result2_2");
+
+            if (isNaN(y) || isNaN(m) || m < 1 || m > 12) {
+                resDiv.innerHTML = "<span style='color:red;'>Введіть коректний рік та місяць (від 1 до 12).</span>";
+            } else {
+                let lastDay = getLastDayOfMonth(y, m);
+                resDiv.innerHTML = `Останній день у ${m}-му місяці ${y} року: <b>${lastDay}</b>`;
+            }
+            resDiv.style.display = "block";
+        }
+
+        function getSecondsStats() {
+            let now = new Date();
+            
+            let startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            
+            let startOfTomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+
+            let passedSeconds = Math.round((now - startOfDay) / 1000);
+            let leftSeconds = Math.round((startOfTomorrow - now) / 1000);
+
+            return {
+                passed: passedSeconds,
+                left: leftSeconds
+            };
+        }
+
+        function displaySecondsInfo() {
+            let stats = getSecondsStats();
+            let resDiv = document.getElementById("result2_3");
+            
+            resDiv.innerHTML = `
+                - кількість секунд, яка пройшла від початку сьогоднішнього дня: <b>${stats.passed}</b><br>
+                - кількість секунд до початку наступного дня: <b>${stats.left}</b>
+            `;
+            resDiv.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
